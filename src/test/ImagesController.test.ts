@@ -10,7 +10,6 @@ describe('GET /images route', () => {
     const result = await request(app).get('/images').send();
 
     expect(result.status).toBe(200);
-
   });
 });
 
@@ -19,7 +18,6 @@ describe('GET /images/doesnotexist route', () => {
     const result = await request(app).get('/images/doesnotexist').send();
     expect(result.status).toBe(404);
     expect(result.text).toBe('Image failed to process: base file does not exists');
-
   });
 });
 
@@ -39,7 +37,6 @@ describe('These are the endpoint image generation tests', () => {
       const result = await request(app).get(`/images/test.jpg?w=${RandomWidth}`).send();
 
       expect(result.status).toBe(200);
-
     });
   });
 
@@ -47,7 +44,6 @@ describe('These are the endpoint image generation tests', () => {
     it('Should return true', async () => {
       const afterGenerating = fileExist(GeneratedFile);
       expect(afterGenerating).toBe(true);
-
     });
   });
 
@@ -65,7 +61,6 @@ describe('These are the endpoint image generation tests', () => {
         unlinkSync(GeneratedFile);
         console.log('delete');
       }
-
     });
   });
 });

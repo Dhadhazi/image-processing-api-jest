@@ -16,17 +16,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-UploadController.post(
-  '/',
-  upload.single('image'),
-  async (req: Request, res: Response): Promise<Response> => {
-    const { filename } = req.file;
-    const imageName = filename.split('.')[0];
-    const width = Number(req.query.w) || null;
-    const height = Number(req.query.h) || null;
+UploadController.post('/', upload.single('image'), async (req: Request, res: Response): Promise<Response> => {
+  const { filename } = req.file;
+  const imageName = filename.split('.')[0];
+  const width = Number(req.query.w) || null;
+  const height = Number(req.query.h) || null;
 
-    if (width || height) resizeImage(imageName, width, height);
+  if (width || height) resizeImage(imageName, width, height);
 
-    return res.send('SUCCESS!');
-  },
-);
+  return res.send('SUCCESS!');
+});

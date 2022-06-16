@@ -12,7 +12,7 @@ describe('resizeImage utility creates the file', () => {
     }
 
     await resizeImage('test', 200, 200);
-    
+
     expect(fileExist(fileToCheck)).toBe(true);
   });
 });
